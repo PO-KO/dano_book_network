@@ -1,0 +1,30 @@
+services:
+  postgres:
+    container_name: postgres-sql-dbs # dbs = dano book social
+    image: postgres
+    environment: 
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: dano_book_social
+      PGDATA: /var/lib/postgresql/data
+    volumes: 
+      - postgres:/data/postgres
+    ports: 
+      - 5432:5432
+    networks:
+      - spring-network
+    restart: unless-stopped
+
+  mail-dev:
+    container_name: mail-dev-dbs
+    image: maildev/maildev
+    ports: 
+      - 1080:1080
+      - 1025:1025
+
+networks: 
+  spring-network: bridge
+
+volumes: 
+  postgres:
+    driver: local
