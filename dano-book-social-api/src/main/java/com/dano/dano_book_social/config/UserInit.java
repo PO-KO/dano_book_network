@@ -3,22 +3,26 @@ package com.dano.dano_book_social.config;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import com.dano.dano_book_social.entity.RoleEntity;
 import com.dano.dano_book_social.entity.UserEntity;
+import com.dano.dano_book_social.repos.RoleRepo;
 import com.dano.dano_book_social.repos.UserRepo;
 
 import lombok.RequiredArgsConstructor;
 
-@Component
 @RequiredArgsConstructor
 public class UserInit implements CommandLineRunner {
     
     private final UserRepo userRepo;
+    private final RoleRepo roleRepo;
 
     @Override
     public void run(String... args) throws Exception {
@@ -33,7 +37,18 @@ public class UserInit implements CommandLineRunner {
                             .enabled(true)
                             .build();
         
-        admin.addRoles(new ArrayList<>(List.of("ADMIN")));
+        // Add Roles
+        Set<RoleEntity> roles = new HashSet<>();
+        
+        var roleAdmin = roleRepo.findByName("ADMIN").orElseThrow(
+            () -> new IllegalArgumentException("This role does not exist")
+            );
+        var roleUser = roleRepo.findByName("USER").orElseThrow(
+            () -> new IllegalArgumentException("This role does not exist")
+            );
+
+        roles.addAll(List.of(roleAdmin, roleUser));
+        admin.addRoles(roles);
 
         userRepo.save(admin);
 

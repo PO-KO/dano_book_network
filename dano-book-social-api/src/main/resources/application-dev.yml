@@ -6,7 +6,7 @@ spring:
     password: password
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate: 
@@ -34,5 +34,8 @@ application:
     jwt:
       secret-key: a97e6b1cf2f99f480673cb6eced3a6b366d8e0d90fd8c79b85970a980731163053d7eb12f58de78544a928ecbbaaf2fbe1a706c37e5938f31baaa663f27402f4ec9c11c2c37eb5dfc85300ad0240628b9e0d01ef2500f859f6674cec87631b367f3bcf60800b0623ed7a8e6afc37a4f7744db476fe87391299597086eb97ac9b03fe03c0b08500a13076be31c33565ec986c31a5657c26b3fc74922d8ddcf5f7834572a04bf71ea723ec3bc78f67be74f5a93753eeffb9b96c92a9f7486a0b351081123ecac1ea4bfc8233fe70788cd10f11de4cc935fed544e7f1f683a12061b3a44d78d40ed377160d113f697fa8e30d39fdb5a903bb72797f393f088db015
       exp: 8640000
+  mailing:
+    frontend:
+      activation-url: "http://localhost:5173/activate-account"
 
 

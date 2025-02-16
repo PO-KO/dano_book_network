@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -50,7 +51,7 @@ public class UserEntity implements UserDetails, Principal {
     private String password;
     private boolean accountLocked;
     private boolean enabled;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
         name = "user_role",
         joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
@@ -62,12 +63,11 @@ public class UserEntity implements UserDetails, Principal {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<TokenEntity> tokens;
 
-    public void addRoles(ArrayList<String> RolesNames) {
-        RolesNames.forEach(
+    public void addRoles(Set<RoleEntity> rolesNames) {
+        rolesNames.forEach(
             (role) -> {
-                var userRole = RoleEntity.builder().name(role).build();
-                roles.add(userRole);
-                userRole.getUsers().add(this);
+                roles.add(role);
+                role.getUsers().add(this);
             }
             );
     }

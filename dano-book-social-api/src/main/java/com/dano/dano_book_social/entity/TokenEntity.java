@@ -1,6 +1,7 @@
 package com.dano.dano_book_social.entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,9 +31,9 @@ public class TokenEntity {
     @Column(unique = true, nullable = false)
     private String token;
     @Column(updatable = false)
-    private LocalDate createdAt;
-    private LocalDate expiresAt;
-    private LocalDate validatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime expiresAt;
+    private LocalDateTime validatedAt;
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")  // Foreign key in Post table

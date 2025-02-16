@@ -1,6 +1,6 @@
 package com.dano.dano_book_social.service;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
@@ -95,6 +95,6 @@ public class JwtService {
     }
 
     private Date extractExpiration(String token) {
-        return (Date) extractClaim(token, Claims::getExpiration);
+        return extractClaim(token, Claims::getExpiration);
     }
 }
