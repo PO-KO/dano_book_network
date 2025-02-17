@@ -2,14 +2,12 @@ package com.dano.dano_book_social.config;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Component;
 
 import com.dano.dano_book_social.entity.RoleEntity;
 import com.dano.dano_book_social.entity.UserEntity;

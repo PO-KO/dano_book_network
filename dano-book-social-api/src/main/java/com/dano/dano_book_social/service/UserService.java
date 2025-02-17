@@ -27,7 +27,6 @@ import com.dano.dano_book_social.repos.RoleRepo;
 import com.dano.dano_book_social.repos.TokenRepo;
 import com.dano.dano_book_social.repos.UserRepo;
 
-import ch.qos.logback.core.subst.Token;
 import jakarta.mail.MessagingException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -53,7 +52,8 @@ public class UserService {
                 authManager.authenticate(new UsernamePasswordAuthenticationToken(requestBody.email(), requestBody.password()));
         
         if(authentication.isAuthenticated()) {
-            UserEntity user = userRepo.findByEmail(requestBody.email()).orElseThrow();
+            // UserEntity user = userRepo.findByEmail(requestBody.email()).orElseThrow(); // My aproach
+            var user = (UserEntity) authentication.getPrincipal(); // Alibou aproach
             String token = jwtService.generateToken(user);
             return new ResponseLoginDTO(
                 user.getFirstName(),

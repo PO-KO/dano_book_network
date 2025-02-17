@@ -1,6 +1,5 @@
 package com.dano.dano_book_social.entity;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
