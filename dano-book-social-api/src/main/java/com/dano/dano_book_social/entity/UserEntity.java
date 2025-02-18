@@ -58,20 +58,25 @@ public class UserEntity implements UserDetails, Principal {
     @Builder.Default
     private Set<RoleEntity> roles = new HashSet<>();
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-        name = "user_book",
-        joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-        inverseJoinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id")
-    )
-    @Builder.Default
-    private Set<BookEntity> books = new HashSet<>();
+    // @ManyToMany(cascade = CascadeType.ALL)
+    // @JoinTable(
+    //     name = "user_book",
+    //     joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+    //     inverseJoinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id")
+    // )
+    // @Builder.Default
+    // private Set<BookEntity> books = new HashSet<>();
+
+
+
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<BookEntity> books;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<TokenEntity> tokens;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<FeedbackEntity> feedbacks;
+    // @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    // private Set<FeedbackEntity> feedbacks;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<BookTransactionHistoryEntity> transctions;
