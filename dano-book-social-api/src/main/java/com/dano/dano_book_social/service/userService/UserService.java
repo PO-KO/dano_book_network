@@ -1,4 +1,4 @@
-package com.dano.dano_book_social.service;
+package com.dano.dano_book_social.service.userService;
 
 
 import java.security.SecureRandom;
@@ -14,7 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 import com.dano.dano_book_social.DTO.UserDTO.RequestRegisterDTO;
 import com.dano.dano_book_social.DTO.UserDTO.RequestTokenDTO;
 import com.dano.dano_book_social.DTO.UserDTO.RequestLoginDTO;
@@ -23,12 +23,11 @@ import com.dano.dano_book_social.constents.EmailTemplateName;
 import com.dano.dano_book_social.entity.RoleEntity;
 import com.dano.dano_book_social.entity.TokenEntity;
 import com.dano.dano_book_social.entity.UserEntity;
-import com.dano.dano_book_social.repos.RoleRepo;
-import com.dano.dano_book_social.repos.TokenRepo;
-import com.dano.dano_book_social.repos.UserRepo;
+import com.dano.dano_book_social.repos.userRepo.RoleRepo;
+import com.dano.dano_book_social.repos.userRepo.TokenRepo;
+import com.dano.dano_book_social.repos.userRepo.UserRepo;
 
 import jakarta.mail.MessagingException;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service

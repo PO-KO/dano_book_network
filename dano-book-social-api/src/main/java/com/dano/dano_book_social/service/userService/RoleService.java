@@ -1,12 +1,12 @@
-package com.dano.dano_book_social.service;
+package com.dano.dano_book_social.service.userService;
 
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 import com.dano.dano_book_social.DTO.UserDTO.RequestAddRoleDTO;
 import com.dano.dano_book_social.entity.RoleEntity;
-import com.dano.dano_book_social.repos.RoleRepo;
+import com.dano.dano_book_social.repos.userRepo.RoleRepo;
 
-import jakarta.transaction.Transactional;
+
 import lombok.RequiredArgsConstructor;
 
 @Service

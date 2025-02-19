@@ -11,8 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.dano.dano_book_social.entity.RoleEntity;
 import com.dano.dano_book_social.entity.UserEntity;
-import com.dano.dano_book_social.repos.RoleRepo;
-import com.dano.dano_book_social.repos.UserRepo;
+import com.dano.dano_book_social.repos.userRepo.RoleRepo;
+import com.dano.dano_book_social.repos.userRepo.UserRepo;
 
 import lombok.RequiredArgsConstructor;
 

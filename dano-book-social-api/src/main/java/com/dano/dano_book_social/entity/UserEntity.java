@@ -69,7 +69,7 @@ public class UserEntity implements UserDetails, Principal {
 
 
 
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "owner")
     private Set<BookEntity> books;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -78,7 +78,7 @@ public class UserEntity implements UserDetails, Principal {
     // @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     // private Set<FeedbackEntity> feedbacks;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user")
     private Set<BookTransactionHistoryEntity> transctions;
 
     public void addRoles(Set<RoleEntity> rolesNames) {

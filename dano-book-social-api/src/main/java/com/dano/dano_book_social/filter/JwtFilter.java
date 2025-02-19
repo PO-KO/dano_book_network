@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.dano.dano_book_social.entity.UserEntity;
-import com.dano.dano_book_social.repos.UserRepo;
-import com.dano.dano_book_social.service.JwtService;
+import com.dano.dano_book_social.repos.userRepo.UserRepo;
+import com.dano.dano_book_social.service.userService.JwtService;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

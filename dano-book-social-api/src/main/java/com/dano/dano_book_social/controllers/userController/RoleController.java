@@ -1,9 +1,9 @@
-package com.dano.dano_book_social.controllers;
+package com.dano.dano_book_social.controllers.userController;
 
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dano.dano_book_social.DTO.UserDTO.RequestAddRoleDTO;
-import com.dano.dano_book_social.service.RoleService;
+import com.dano.dano_book_social.service.userService.RoleService;
 
 import lombok.RequiredArgsConstructor;
 

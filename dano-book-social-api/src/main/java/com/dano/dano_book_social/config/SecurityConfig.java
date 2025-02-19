@@ -16,7 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.dano.dano_book_social.filter.JwtFilter;
-import com.dano.dano_book_social.service.HandleUserDetailsService;
+import com.dano.dano_book_social.service.userService.HandleUserDetailsService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -37,6 +37,8 @@ public class SecurityConfig {
                             request.requestMatchers(
                                 "/auth/**",
                                         "/v2/api-docs",
+                                        "/api-docs",
+                                        "/api-docs/**",
                                         "/v3/api-docs",
                                         "/v3/api-docs/**",
                                         "/swagger-resources",

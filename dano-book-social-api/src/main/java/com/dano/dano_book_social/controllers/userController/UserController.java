@@ -1,4 +1,4 @@
-package com.dano.dano_book_social.controllers;
+package com.dano.dano_book_social.controllers.userController;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -6,7 +6,7 @@ import com.dano.dano_book_social.DTO.UserDTO.RequestLoginDTO;
 import com.dano.dano_book_social.DTO.UserDTO.RequestRegisterDTO;
 import com.dano.dano_book_social.DTO.UserDTO.RequestTokenDTO;
 import com.dano.dano_book_social.DTO.UserDTO.ResponseLoginDTO;
-import com.dano.dano_book_social.service.UserService;
+import com.dano.dano_book_social.service.userService.UserService;
 
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;

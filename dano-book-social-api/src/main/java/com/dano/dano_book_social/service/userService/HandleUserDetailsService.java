@@ -1,11 +1,11 @@
-package com.dano.dano_book_social.service;
+package com.dano.dano_book_social.service.userService;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.dano.dano_book_social.repos.UserRepo;
+import com.dano.dano_book_social.repos.userRepo.UserRepo;
 
 import lombok.RequiredArgsConstructor;
 

@@ -1,5 +1,6 @@
 package com.dano.dano_book_social.entity;
 
+import java.beans.Transient;
 import java.util.Set;
 
 
@@ -47,6 +48,17 @@ public class BookEntity extends BaseEntity {
 
     // @ManyToMany(mappedBy = "books")
     // private Set<UserEntity> users;
+
+
+    @Transient
+    public Double getNote() {
+        if(feedbacks == null || feedbacks.isEmpty()) return null;
+
+        return feedbacks
+                .stream()
+                .map(FeedbackEntity::getNote)
+                .reduce(0.0, Double::sum) / feedbacks.size();
+    }
 
 
 }

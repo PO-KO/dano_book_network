@@ -1,4 +1,4 @@
-package com.dano.dano_book_social.service;
+package com.dano.dano_book_social.service.userService;
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;

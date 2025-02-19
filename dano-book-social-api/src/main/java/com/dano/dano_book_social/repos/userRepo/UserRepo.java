@@ -1,4 +1,4 @@
-package com.dano.dano_book_social.repos;
+package com.dano.dano_book_social.repos.userRepo;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
