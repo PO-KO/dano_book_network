@@ -6,11 +6,14 @@ import com.dano.dano_book_social.DTO.BookDTO.ResponseBookDTO;
 import com.dano.dano_book_social.DTO.BookDTO.ResponseBorrowedBookDTO;
 import com.dano.dano_book_social.entity.BookEntity;
 import com.dano.dano_book_social.entity.UserEntity;
+import com.dano.dano_book_social.service.FileService;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class BookMapper {
+
+    private final FileService fileService;
 
     public BookEntity toBook(RequestCreateBookDTO requestBody, UserEntity owner) {
 
@@ -35,7 +38,7 @@ public class BookMapper {
             book.getAuthor(),
             book.getIsbn(),
             book.getSynopsis(), 
-            null,
+            fileService.readFile(book.getCover()),
             book.getNote(),
             book.getFeedbacks().size(),
             book.isShareable(), 
@@ -43,7 +46,7 @@ public class BookMapper {
             book.getOwner().getId());
     }
 
-    public ResponseBorrowedBookDTO toBorrowedBookResponse(BookEntity book, boolean returned, boolean returnedApproved) {
+    public ResponseBorrowedBookDTO toBorrowedBookResponse(BookEntity book, boolean returned, boolean returnApproved) {
 
         return new ResponseBorrowedBookDTO(
             book.getId(),
@@ -51,12 +54,12 @@ public class BookMapper {
             book.getAuthor(),
             book.getIsbn(),
             book.getSynopsis(), 
-            null,
+            fileService.readFile(book.getCover()),
             book.getNote(),
             book.getFeedbacks().size(),
             book.getOwner().getId(),
             returned,
-            returnedApproved
+            returnApproved
             );
     }
 }

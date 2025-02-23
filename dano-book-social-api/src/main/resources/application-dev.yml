@@ -37,6 +37,9 @@ application:
   mailing:
     frontend:
       activation-url: "http://localhost:5173/activate-account"
+  file:
+    upload:
+      pictures-path: ./uploads
   
 
 
