@@ -153,7 +153,7 @@ public class UserService {
         if(!tokenDB.getUser().isEnabled() && tokenDB.getExpiresAt().isAfter(LocalDateTime.now())) {
             tokenDB.getUser().setEnabled(true);
             tokenDB.setValidatedAt(LocalDateTime.now());
-            tokenRepo.save(tokenDB);
+            //tokenRepo.save(tokenDB);
         } else if (tokenDB.getUser().isEnabled()) {
             System.out.println("User account is already enabled");
         } else {

@@ -19,7 +19,6 @@ import com.dano.dano_book_social.DTO.BookDTO.ResponseBorrowedBookDTO;
 import com.dano.dano_book_social.common.PageResponse;
 import com.dano.dano_book_social.service.bookService.BookService;
 import io.swagger.v3.oas.annotations.Parameter;
-import jakarta.mail.Multipart;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
@@ -105,7 +104,7 @@ public class BookController {
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/borrow/${id}")
+    @PostMapping("/borrow/{id}")
     public ResponseEntity<?>borrowBook(@PathVariable Integer id, Authentication authentication) {
 
         service.borrowBook(id, authentication);

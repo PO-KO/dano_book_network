@@ -59,7 +59,10 @@ public class FileService {
             return null;
         }
 
-        return fileName.split(".")[1].toLowerCase();
+
+        int index = fileName.lastIndexOf(".");
+
+        return fileName.substring(index + 1);
 
     }
 

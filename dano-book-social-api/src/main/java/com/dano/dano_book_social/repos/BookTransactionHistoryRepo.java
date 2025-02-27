@@ -34,7 +34,7 @@ public interface BookTransactionHistoryRepo extends JpaRepository<BookTransactio
 
     @Query("""
         SELECT bth FROM BookTransactionHistoryEntity bth
-        WHERE bth.owner.id = :ownerId
+        WHERE bth.user.id = :ownerId
         AND bth.book.id = :bookId
         AND bth.returned = true
         AND bth.returnApproved = false

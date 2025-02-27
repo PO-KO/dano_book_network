@@ -74,7 +74,7 @@ public class BookService {
 
     public PageResponse<ResponseBookDTO> getAllOwnedBooks(int page, int size, Authentication connectedUser) {
         UserEntity user = (UserEntity) connectedUser.getPrincipal();
-         Pageable pageable = PageRequest.of(page, size, Sort.by("createdAt").descending());
+        Pageable pageable = PageRequest.of(page, size, Sort.by("createdAt").descending());
 
         Page<BookEntity> books = bookRepo.findAll(BookSpec.withOwnerId(user.getId()), pageable);
         
