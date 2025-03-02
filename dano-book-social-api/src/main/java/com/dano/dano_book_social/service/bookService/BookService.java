@@ -153,17 +153,29 @@ public class BookService {
         );
     }
 
+    public PageResponse<ResponseBookDTO> searchBook(
+                            String title,
+                            String author,
+                            String isbn,
+                            int page,
+                            int size,
+                            Authentication connectedUser) {
+
+        return null;
+    }
+
+    @Transactional
     public void updateShareable(Integer id, Authentication connectedUser) {
         var book = bookRepo.findById(id).orElseThrow(() -> new EntityNotFoundException("No book found with ID " + id));
         var user = (UserEntity) connectedUser.getPrincipal();
 
-        if(book.getOwner().getId() != user.getId()) {
+        if(book.getOwner().getId().intValue() != user.getId().intValue()) {
             throw new OperationNotPermittedException("you can not update this book");
         }
 
         book.setShareable(!book.isShareable());
 
-        bookRepo.save(book);
+        // bookRepo.save(book);
     }
 
     @Transactional
@@ -177,7 +189,7 @@ public class BookService {
 
         book.setArchived(!book.isArchived());
 
-        bookRepo.save(book);
+        // bookRepo.save(book);
     }
 
     @Transactional
@@ -205,7 +217,6 @@ public class BookService {
         transactionRepo.save(transaction);
     }
 
-    
     @Transactional
     public void returnBorrowedBook(Integer id, Authentication connectedUser) {
         var book = bookRepo.findById(id).orElseThrow(() -> new EntityNotFoundException("No book found with ID " + id));
@@ -224,7 +235,7 @@ public class BookService {
 
         bookTransaction.setReturned(true);
 
-        transactionRepo.save(bookTransaction);
+        // transactionRepo.save(bookTransaction);
     }
 
     @Transactional
@@ -245,10 +256,11 @@ public class BookService {
 
         bookTransaction.setReturnApproved(true);
         book.setShareable(true);
-        transactionRepo.save(bookTransaction);
-        bookRepo.save(book);
+        // transactionRepo.save(bookTransaction);
+        // bookRepo.save(book);
     }
 
+    @Transactional
     public void uploadBookCover(Integer id, Authentication connectedUser, MultipartFile file) {
         var book = bookRepo.findById(id).orElseThrow(() -> new EntityNotFoundException("No book found with ID " + id));
         var user = (UserEntity) connectedUser.getPrincipal();
@@ -259,7 +271,7 @@ public class BookService {
 
         String bookCover = fileService.saveFile(file, user.getId());
         book.setCover(bookCover);
-        bookRepo.save(book);
+        // bookRepo.save(book);
 
     }
 
